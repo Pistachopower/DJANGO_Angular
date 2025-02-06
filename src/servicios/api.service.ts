@@ -12,4 +12,9 @@ export class ApiService {
   getProductAll ():Observable<any>{
     return this.http.get('https://fakestoreapi.com/products');
   }
+
+  //para un solo producto cuando le das a detalle del producto
+  getSingleProduct ():Observable<any>{
+    return this.http.get('https://fakestoreapi.com/products/1');
+  }
 }

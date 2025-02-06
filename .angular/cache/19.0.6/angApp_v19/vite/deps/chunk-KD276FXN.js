@@ -1,4 +1,3 @@
-import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   ApplicationRef,
   Attribute,
@@ -27,9 +26,13 @@ import {
   Renderer2,
   RendererStyleFlags2,
   RuntimeError,
+  Subject,
   TemplateRef,
   Version,
   ViewContainerRef,
+  __async,
+  __spreadProps,
+  __spreadValues,
   booleanAttribute,
   createNgModule,
   findLocaleData,
@@ -42,7 +45,6 @@ import {
   numberAttribute,
   performanceMarkFeature,
   registerLocaleData,
-  require_cjs,
   setClassMetadata,
   stringify,
   untracked,
@@ -58,16 +60,9 @@ import {
   ɵɵinject,
   ɵɵinjectAttribute,
   ɵɵstyleProp
-} from "./chunk-7M4M3T3M.js";
-import {
-  __async,
-  __spreadProps,
-  __spreadValues,
-  __toESM
-} from "./chunk-YHCV7DAQ.js";
+} from "./chunk-GZKEX4RU.js";
 
-// ../../node_modules/@angular/common/fesm2022/common.mjs
-var import_rxjs = __toESM(require_cjs(), 1);
+// node_modules/@angular/common/fesm2022/common.mjs
 var _DOM = null;
 function getDOM() {
   return _DOM;
@@ -414,7 +409,7 @@ var HashLocationStrategy = class _HashLocationStrategy extends LocationStrategy 
 })();
 var Location = class _Location {
   /** @internal */
-  _subject = new import_rxjs.Subject();
+  _subject = new Subject();
   /** @internal */
   _basePath;
   /** @internal */
@@ -5128,4 +5123,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-3JP4HEIM.js.map
+//# sourceMappingURL=chunk-KD276FXN.js.map
