@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
+import { HomeComponent } from "./mis_components/home/home.component";
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from "../components/home/home.component";
-import { DetallesProductoComponent } from '../components/detalles-producto/detalles-producto.component';
+import { HeaderComponent } from "./mis_components/header/header.component";
 
 @Component({
   selector: 'app-root',
   
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [HomeComponent,DetallesProductoComponent],
+  imports: [RouterOutlet,HeaderComponent],
 })
 export class AppComponent {
   title = 'angApp_v19';

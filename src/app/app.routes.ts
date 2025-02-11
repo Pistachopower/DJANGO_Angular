@@ -1,17 +1,12 @@
+import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import { ProductoComponent } from '../components/producto/producto.component';
-import { DetallesProductoComponent } from '../components/detalles-producto/detalles-producto.component';
-import { HomeComponent } from '../components/home/home.component';
-import { AppComponent } from './app.component';
-
+import path from 'path';
+import { HomeComponent } from './mis_components/home/home.component';
+import { ProductosComponent } from './mis_components/productos/productos.component';
 
 
 export const routes: Routes = [
-    //esto es como una url
-    {path:"", component:AppComponent},
-    {path:"hola", component:ProductoComponent},
-    // {path:"producto", component:ProductoComponent},
-    {path:"detallesproducto", component:DetallesProductoComponent},
-    {path:"home", component:HomeComponent},
+    { path: "", component: HomeComponent },
+    { path: "productos", component: ProductosComponent },
 
 ];
