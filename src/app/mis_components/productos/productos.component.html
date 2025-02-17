@@ -7,7 +7,15 @@
     </li>
   </ul> -->
 
+  
+
   <div class="container mt-4">
+    <div class="d-flex justify-content-end mb-3">
+      <button class="btn btn-secondary me-2" (click)="ordenarProductos('asc')">Ordenar Ascendente</button>
+      <button class="btn btn-secondary" (click)="ordenarProductos('desc')">Ordenar Descendente</button>
+      <button class="btn btn-secondary" (click)="ordenarPorPrecio()">Ordenar por precio</button>
+
+    </div>
     <div class="row">
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let producto of productos">
         <div class="card h-100 shadow-sm">
