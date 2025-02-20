@@ -11,12 +11,14 @@ import { CommonModule } from "@angular/common";
 export class ProductosComponent {
   productos: any = [];
   filtro: string = "";
+  ordenarAscendente: boolean = true; // Booleano para controlar el orden
 
   //llamamos a la clase ServicioService con todas sus propiedades y métodos
   constructor(private servicio: ServicioService) {
     //nos suscribimos a la variable palabraFiltrada$ para que cuando
     //cambie el valor de la variable palabraFiltrada se ejecute el método
     //filtrarProductos
+    console.log("llamar al constructor");
     this.servicio.palabraFiltrada$.subscribe((palabra) => {
       this.filtro = palabra;
       this.filtrarProductos(palabra);
@@ -31,7 +33,7 @@ export class ProductosComponent {
         console.log(this.servicio.productos);
         this.productos = data;
 
-        if (this.filtro != "") {
+        if (this.filtro != "") { //se ejecuta cuando buscas desde el header o home
           this.filtrarProductos(this.filtro);
         }
       },
@@ -49,5 +51,27 @@ export class ProductosComponent {
         return producto.title.toLowerCase().includes(palabra.toLowerCase());
       });
     }
+  }
+
+  //método para ordenar productos
+  ordenarProductos(sort: string) {
+
+    this.servicio.sortProductos(sort).subscribe({
+      next: (data) => {
+        this.productos = data;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  ordenarPorPrecio() {
+    if (this.ordenarAscendente) {
+      this.productos.sort((a: any, b: any) => a.price - b.price);
+    } else {
+      this.productos.sort((a: any, b: any) => b.price - a.price);
+    }
+    this.ordenarAscendente = !this.ordenarAscendente; // Cambia el valor del booleano
   }
 }
