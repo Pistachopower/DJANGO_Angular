@@ -25,11 +25,9 @@ export class ServicioService {
   updatePalabraFiltrada(palabra: string){
     this.palabraFiltrada.next(palabra);
 
-
   }
 
   getProductos(){
-    
     return this.http.get('https://fakestoreapi.com/products');
   }
 }
