@@ -1,0 +1,122 @@
+<div class="container mt-5">
+  <h2>Contacto</h2>
+  <form [formGroup]="formulario" (ngSubmit)="enviarMensaje()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid':
+            formulario.get('nombre')?.invalid &&
+            formulario.get('nombre')?.touched
+        }"
+        formControlName="nombre"
+        class="form-control"
+        id="nombre"
+        placeholder="Tu nombre"
+      />
+      <div
+        *ngIf="
+        formulario.get('nombre')?.errors?.['required'] && formulario.get('nombre')?.touched
+        "
+        class="invalid-feedback"
+      >
+        El nombre es obligatorio.
+      </div>
+      <div
+      *ngIf="
+      formulario.get('nombre')?.errors?.['minlength'] && formulario.get('nombre')?.touched
+      "
+      class="invalid-feedback"
+    >
+      La longitud de la cadena debe ser mayor a 3.
+    </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        [ngClass]="{
+          'is-invalid':
+            formulario.get('email')?.invalid && formulario.get('email')?.touched
+        }"
+        formControlName="email"
+        class="form-control"
+        id="email"
+        placeholder="nombre@ejemplo.com"
+      />
+      <div
+        *ngIf="
+        formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched
+      "
+        class="invalid-feedback"
+      >
+        El correo es obligatorio.
+      </div>
+      <div
+        *ngIf="
+        formulario.get('email')?.errors?.['email'] && formulario.get('email')?.touched
+      "
+        class="invalid-feedback"
+      >
+        El formato del correo es incorrecto.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="mensaje" class="form-label">Mensaje</label>
+      <textarea
+        class="form-control"
+        formControlName="mensaje"
+        id="mensaje"
+        rows="4"
+        placeholder="Tu mensaje"
+        [ngClass]="{
+          'is-invalid':
+            formulario.get('mensaje')?.invalid &&
+            formulario.get('mensaje')?.touched
+        }"
+      >
+      </textarea>
+      <div
+        *ngIf="
+          formulario.get('mensaje')?.invalid &&
+          formulario.get('mensaje')?.touched
+        "
+        class="invalid-feedback"
+      >
+        El mensaje es obligatorio.
+      </div>
+
+    </div>
+
+    <button type="submit" [disabled]="enviado" class="btn btn-primary">
+      Enviar
+    </button>
+  </form>
+</div>
+
+<div
+  class="toast-container position-fixed bottom-0 end-0 p-3"
+  style="z-index: 11"
+>
+  <div
+    id="liveToast"
+    class="toast align-items-center text-white bg-success border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">¡Correo enviado con éxito!</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+        [disabled]="enviado"
+      ></button>
+    </div>
+  </div>
+</div>

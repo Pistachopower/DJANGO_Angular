@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       //obtenemos los datos y los guardamos en la variable productos
       next: (data) => { //data es la respuesta del servidor (api)
         this.productos = data;
-        console.log('Productos', this.productos);
+        //console.log('Productos', this.productos);
       },
       error: (error) => {
         console.error('Error fetching productos', error);

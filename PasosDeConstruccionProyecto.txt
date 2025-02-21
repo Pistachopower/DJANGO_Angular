@@ -1,0 +1,25 @@
+Pasos para que el correo funcione con la pagina	
+
+creas la cuenta 
+
+Construcción del requisito del formulario
+creas el componente email en servicios
+
+instalar la libreria: npm install emailjs-com
+
+En servicio email debes importar lo siguiente para trabajar con el servicio: 
+import emailjs,{EmailJSResponseStatus} from 'emailjs-com';
+
+Copiamos el id de la pagina, ejemplo: service_euj2kzf y lo pegas en el metodo de email 
+
+Creamos el metodo para enviar correos donde se pasan parametros de la configuracion
+del servicio de emailjs
+
+Formularios reactivos
+Creo otro componentes para trabajar con el formulario de contacto 
+Lo vinculo con el formulario del html 
+
+Se crea un nuevo método que recibe los datos del formulario 
+Y se usa el servicio con email service pasandole los datos del formulario al método enviar correo
+
+

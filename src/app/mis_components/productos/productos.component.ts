@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ServicioService } from "../servicios/servicio.service";
 import { CommonModule } from "@angular/common";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-productos",
@@ -14,11 +15,11 @@ export class ProductosComponent {
   ordenarAscendente: boolean = true; // Booleano para controlar el orden
 
   //llamamos a la clase ServicioService con todas sus propiedades y métodos
-  constructor(private servicio: ServicioService) {
+  constructor(private servicio: ServicioService, private router: Router) {
     //nos suscribimos a la variable palabraFiltrada$ para que cuando
     //cambie el valor de la variable palabraFiltrada se ejecute el método
     //filtrarProductos
-    console.log("llamar al constructor");
+    
     this.servicio.palabraFiltrada$.subscribe((palabra) => {
       this.filtro = palabra;
       this.filtrarProductos(palabra);
@@ -30,7 +31,7 @@ export class ProductosComponent {
     this.servicio.getProductos().subscribe({
       next: (data) => {
         this.servicio.productos = data;
-        console.log(this.servicio.productos);
+        // console.log(this.servicio.productos);
         this.productos = data;
 
         if (this.filtro != "") { //se ejecuta cuando buscas desde el header o home
@@ -74,4 +75,9 @@ export class ProductosComponent {
     }
     this.ordenarAscendente = !this.ordenarAscendente; // Cambia el valor del booleano
   }
+
+  verDetalle(id: number) {
+    this.router.navigate(['/detalle', id]); //sirve para ir a la ruta detalle
+  }
+
 }

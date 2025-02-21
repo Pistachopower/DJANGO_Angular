@@ -6,12 +6,13 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ServicioService {
+  
 
   constructor(private http: HttpClient) {  
   }
     //inicializamos la variable productos, palabraFiltrada
     productos: any= [];
-
+    router: any;
 
 
   //creamos una variable palabraFiltrada de tipo BehaviorSubject para guardar 
@@ -37,4 +38,9 @@ export class ServicioService {
     //console.log('sortProductos');
     return this.http.get('https://fakestoreapi.com/products?sort='+sort);
   }
+
+  getProductoById(id: string) {
+    return this.http.get(`https://fakestoreapi.com/products/${id}`);
+  }
+
 }
