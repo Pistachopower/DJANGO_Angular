@@ -8,9 +8,7 @@ import {
 import { EmailService } from "../servicios/email.service";
 import { CommonModule } from "@angular/common";
 
-
 declare var bootstrap: any;
-
 
 @Component({
   selector: "app-contacto",
@@ -25,12 +23,19 @@ export class ContactoComponent {
   //inyectamos el servicio FormBuilder y EmailService
   //FormBuilder: para crear formularios reactivos
   //EmailService: para enviar correos electrónicos
-  constructor(private fb: FormBuilder, private servicio: EmailService) { 
+  constructor(private fb: FormBuilder, private servicio: EmailService) {
     //inicializamos un formulario con tres campos: nombre, email
     this.formulario = this.fb.group({
       //cada campo se valida con Validators.required (son obligatorios) y
       // Validators.email (para comprobar que el formato es correcto)
-      nombre: ["", [Validators.required,Validators.minLength(3)   ,Validators.maxLength(200)]], 
+      nombre: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(200),
+        ],
+      ],
       email: ["", [Validators.required, Validators.email]],
       mensaje: ["", Validators.required],
     });
@@ -39,18 +44,16 @@ export class ContactoComponent {
   enviarMensaje() {
     console.log(this.formulario.value);
 
-    if (this.enviado === true) { //sirve para que no se envíe el formulario más de una vez
+    if (this.enviado === true) {
+      //sirve para que no se envíe el formulario más de una vez
       return;
     }
 
-    
-
     if (this.formulario.valid) {
-
       // Convertir el email a minúsculas
       const formValue = this.formulario.value;
       formValue.email = formValue.email.toLowerCase();
-      
+
       this.enviado = true; //se cambia a true para que no se envíe más de una vez
 
       this.servicio.sendEmail(this.formulario.value).then(
@@ -58,37 +61,27 @@ export class ContactoComponent {
           console.log(result.text);
 
           const toastElement = document.getElementById("liveToast"); //esto es para el mensaje de éxito
-          const toast = new bootstrap.Toast(toastElement); 
-          
+          const toast = new bootstrap.Toast(toastElement);
 
           if (result.status === 200) {
             this.formulario.reset(); //
             toast.show(); //muestra el toast
-            this.enviado= false;
+            this.enviado = false;
           }
         },
         (error: any) => {
           console.log(error.text);
         }
-        
       );
-    }
-    else {
-
+    } else {
       // Acceder a los errores de los controles del formulario
-      const nombreErrors = this.formulario.get('nombre')?.errors;
-      const emailErrors = this.formulario.get('email')?.errors;
-      const mensajeErrors = this.formulario.get('mensaje')?.errors;
+      const nombreErrors = this.formulario.get("nombre")?.errors;
+      const emailErrors = this.formulario.get("email")?.errors;
+      const mensajeErrors = this.formulario.get("mensaje")?.errors;
 
-      console.log('Errores en el campo nombre:', nombreErrors);
-      console.log('Errores en el campo email:', emailErrors);
-      console.log('Errores en el campo mensaje:', mensajeErrors);
-      
+      console.log("Errores en el campo nombre:", nombreErrors);
+      console.log("Errores en el campo email:", emailErrors);
+      console.log("Errores en el campo mensaje:", mensajeErrors);
     }
-
-
-    
   }
-
-
 }

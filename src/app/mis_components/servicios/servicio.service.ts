@@ -12,7 +12,7 @@ export class ServicioService {
   }
     //inicializamos la variable productos, palabraFiltrada
     productos: any= [];
-    router: any;
+    router: any; //
 
 
   //creamos una variable palabraFiltrada de tipo BehaviorSubject para guardar 

@@ -1,7 +1,7 @@
 <!-- Barra de navegación -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Mi App</a>
+    <a class="navbar-brand" href="#">La FakeZom</a>
 
     <!-- Botón de menú en móviles -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -11,6 +11,11 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
+
+            <!--
+            routerLink: navegacion de rutas
+            routerLinkActive="active" directiva que activa los css del componente que te encuentres
+            -->
         <li class="nav-item">
           <a class="nav-link active" routerLink="/"  routerLinkActive="active">Inicio</a>
         </li>
@@ -25,7 +30,10 @@
         <!-- Barra de búsqueda después de "Contacto" -->
         <li class="nav-item ms-lg-3">
           <form class="d-flex" role="search">
+            <!--#busqueda (variable local): es parecido a un id, necesario para identificar--> 
             <input #busqueda class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar">
+            
+            <!--se actica cuando dan click-->
             <button (click)="buscar($event, busqueda.value)" class="btn btn-outline-light" type="">
               <i class="bi bi-search">busqueda</i> <!-- Icono de Bootstrap -->
             </button>

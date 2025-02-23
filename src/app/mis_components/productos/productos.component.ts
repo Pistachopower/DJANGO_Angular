@@ -49,6 +49,7 @@ export class ProductosComponent {
     console.log(palabra);
     if (palabra != "") {
       this.productos = this.servicio.productos.filter((producto: any) => {
+        //si la palabra existe en la api devuelve array
         return producto.title.toLowerCase().includes(palabra.toLowerCase());
       });
     }

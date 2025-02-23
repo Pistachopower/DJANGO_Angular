@@ -15,7 +15,7 @@ export class EmailService {
 
     const serviceId = 'service_euj2kzf'; //service id
     const templateId = 'template_8d9lvhu';
-    const publicKey= 'ikc-uaiZ8zvoCRnFs';
+    const publicKey= 'AHVXW5-qXv2dlz4gY';
 
     return emailjs.send(serviceId, templateId, formularioData, publicKey)
    

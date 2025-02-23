@@ -1,11 +1,8 @@
-.carousel-control-prev-icon{
-  background-color: aqua;
+.carousel-control-prev-icon, .carousel-control-next-icon{
+  background-color: rgb(9, 50, 77);
 }
 
-.carousel-control-next-icon{
-  background-color: aqua;
-}
-
+  
 
 
 
