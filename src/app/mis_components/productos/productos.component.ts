@@ -13,6 +13,7 @@ export class ProductosComponent {
   productos: any = [];
   filtro: string = "";
   ordenarAscendente: boolean = true; // Booleano para controlar el orden
+  productosNoEncontrados= false;
 
   //llamamos a la clase ServicioService con todas sus propiedades y métodos
   constructor(private servicio: ServicioService, private router: Router) {
@@ -52,6 +53,16 @@ export class ProductosComponent {
         //si la palabra existe en la api devuelve array
         return producto.title.toLowerCase().includes(palabra.toLowerCase());
       });
+
+      //cuando el array esta vacio
+    if (this.productos.length == 0) {
+      this.productosNoEncontrados = true;
+
+    } else {
+      this.productosNoEncontrados = false;
+    }
+
+
     }
   }
 

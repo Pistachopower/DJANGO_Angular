@@ -23,3 +23,14 @@ Se crea un nuevo método que recibe los datos del formulario
 Y se usa el servicio con email service pasandole los datos del formulario al método enviar correo
 
 
+Pasos para la Construcción del login  
+Creamos un Guard (es de Angular ): Un guard es una función que decide 
+si un usuario puede acceder a un componente. Con el siguiente comando:
+ng generate guard login
+
+Creamos el servicio login para el login: ng generate service login
+
+Después creamos el componente que hará uso de lo anterior: ng generate component login
+
+
+Nos presento un error: localStorage is not defined para ello

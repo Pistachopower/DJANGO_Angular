@@ -23,6 +23,7 @@ export class ContactoComponent {
   //inyectamos el servicio FormBuilder y EmailService
   //FormBuilder: para crear formularios reactivos
   //EmailService: para enviar correos electrónicos
+  
   constructor(private fb: FormBuilder, private servicio: EmailService) {
     //inicializamos un formulario con tres campos: nombre, email
     this.formulario = this.fb.group({
@@ -33,7 +34,7 @@ export class ContactoComponent {
         [
           Validators.required,
           Validators.minLength(3),
-          Validators.maxLength(200),
+          Validators.maxLength(100),
         ],
       ],
       email: ["", [Validators.required, Validators.email]],
@@ -53,6 +54,7 @@ export class ContactoComponent {
       // Convertir el email a minúsculas
       const formValue = this.formulario.value;
       formValue.email = formValue.email.toLowerCase();
+      formValue.nombre = formValue.nombre.toLowerCase();
 
       this.enviado = true; //se cambia a true para que no se envíe más de una vez
 
@@ -64,7 +66,7 @@ export class ContactoComponent {
           const toast = new bootstrap.Toast(toastElement);
 
           if (result.status === 200) {
-            this.formulario.reset(); //
+            this.formulario.reset(); //los datos del formulario se borrar
             toast.show(); //muestra el toast
             this.enviado = false;
           }

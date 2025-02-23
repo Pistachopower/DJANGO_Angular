@@ -1,5 +1,9 @@
 <div class="container mt-5">
   <h2>Contacto</h2>
+  <!--
+  [formGroup]: vincula el formulario con el contacto.component.ts 
+  (ngSubmit): evento que se dispara cuando se envía el formulario
+  -->
   <form [formGroup]="formulario" (ngSubmit)="enviarMensaje()">
     <div class="mb-3">
       <label for="nombre" class="form-label">Nombre</label>
@@ -31,6 +35,14 @@
     >
       La longitud de la cadena debe ser mayor a 3.
     </div>
+    <div
+    *ngIf="
+    formulario.get('nombre')?.errors?.['maxlength'] && formulario.get('nombre')?.touched
+    "
+    class="invalid-feedback"
+  >
+    La longitud de la cadena debe ser menorr a 100.
+  </div>
     </div>
 
     <div class="mb-3">

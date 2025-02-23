@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import emailjs,{EmailJSResponseStatus} from 'emailjs-com';
 
 
-@Injectable({
-  providedIn: 'root'
+@Injectable({ //@Injectable: sirve para que el servicio pueda ser inyectado en otros componentes
+  providedIn: 'root' //sirve para que el servicio esté disponible en toda la aplicación
 })
 export class EmailService {
 

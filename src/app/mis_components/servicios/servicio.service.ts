@@ -18,7 +18,7 @@ export class ServicioService {
   //creamos una variable palabraFiltrada de tipo BehaviorSubject para guardar 
   // valores anteriores y 
   // una variable palabraFiltrada$ de tipo Observable para 
-  // que los componentes puedan suscribirse (comunicarse) a ella
+  // que los componentes puedan suscribirse (comunicarse) a ella (palabraFiltrada)
   private palabraFiltrada= new BehaviorSubject<string>(''); //se inicializa con un string vacío 
   palabraFiltrada$= this.palabraFiltrada.asObservable(); //observable: permite suscribirse (listener) a un evento
 
