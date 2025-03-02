@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit {    
 
   //aqui inyectamos el servicio
   constructor(private servicio: ServicioService) { }

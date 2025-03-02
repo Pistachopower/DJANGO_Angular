@@ -13,7 +13,7 @@ export class ProductosComponent {
   productos: any = [];
   filtro: string = "";
   ordenarAscendente: boolean = true; // Booleano para controlar el orden
-  productosNoEncontrados= false;
+  productosNoEncontrados= false; // Variable para mostrar mensaje de no encontrado
 
   //llamamos a la clase ServicioService con todas sus propiedades y métodos
   constructor(private servicio: ServicioService, private router: Router) {
@@ -81,8 +81,12 @@ export class ProductosComponent {
 
   ordenarPorPrecio() {
     if (this.ordenarAscendente) {
+      //se ordenade menor a mayor
       this.productos.sort((a: any, b: any) => a.price - b.price);
-    } else {
+    } 
+     
+    else {
+      //se ordenade mayor a menor
       this.productos.sort((a: any, b: any) => b.price - a.price);
     }
     this.ordenarAscendente = !this.ordenarAscendente; // Cambia el valor del booleano
