@@ -8,15 +8,15 @@ export class DjangoService {
   constructor(private http: HttpClient) { }
 
   peticionDjango() {
-    debugger
-    const token = '8qmTvt9IQ3h3tuDjPBjQbyMNEfRvk7';
+    //debugger
+    const token = 'Q6ScRQFZptyQHfV8MpKPywH0mbywfx';
 
     const headers = new HttpHeaders({
-        Authorization: 'Bearer' + token
+        Authorization: 'Bearer ' + token
        });
 
 
-    return this.http.get("http://localhost:8080/api/v1/pedidos-lista/", { headers }).subscribe((datos)  => {
+    return this.http.get("https://pistacho.pythonanywhere.com/api/v1/empleados", { headers }).subscribe((datos)  => {
       console.log(datos);
     }
   )}
