@@ -1,1 +1,22 @@
-<p>django works!</p>
+<div class="container mt-4">
+    <h3>Datos del empleado</h3>
+    <div class="row">
+      <div *ngFor="let empleado of empleados" class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+           
+            <p class="card-text"><strong>Nombre:</strong> {{ empleado.empleado }}</p>
+            <p class="card-text"><strong>Apellido:</strong> {{ empleado.apellido }}</p>
+            <p class="card-text"><strong>Cargo:</strong> {{ empleado.cargo }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #cargando>
+      <div class="alert alert-info" role="alert">
+        Cargando empleados...
+      </div>
+    </ng-template>
+  </div>
+  
